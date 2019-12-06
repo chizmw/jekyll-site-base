@@ -1,0 +1,5 @@
+---
+-   repo: https://github.com/chiselwright/pre-commit-rescuetime
+    rev: v0.0.3
+    hooks:
+    -   id: rescuetime-highlight
