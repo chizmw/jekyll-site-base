@@ -25,11 +25,19 @@ RUN     bundle install --full-index
 ONBUILD		COPY    Gemfile*    ${JEKYLL_SRC}
 ONBUILD		RUN     bundle install --full-index
 ONBUILD		COPY    .           ${JEKYLL_SRC}
+
 ONBUILD		USER root
 ONBUILD		RUN  chown -R jsite: ${JEKYLL_SRC}
 ONBUILD		RUN  chown -R jsite: ${JEKYLL_DEST}
 ONBUILD		USER jsite
-ONBUILD		RUN     jekyll build --destination ${JEKYLL_DEST}
+
+ONBUILD		ARG jekyll_overrides
+# set a default (of nothing) in case the ARG isn't passed
+ONBUILD		ENV JEKYLL_OVERRIDES=${jekyll_overrides:-}
+
+# JEKYLL_OVERRIDES is set where required in 01.nginx.proxy/docker-compose.yml
+ONBUILD		RUN     echo +++ Using: --config _config.yml,${JEKYLL_OVERRIDES}
+ONBUILD		RUN     jekyll build --trace --destination ${JEKYLL_DEST} --config _config.yml,${JEKYLL_OVERRIDES}
 ONBUILD		RUN     ls -larth ${JEKYLL_DEST}
 
 #-----
