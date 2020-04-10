@@ -12,11 +12,23 @@ ENV JEKYLL_ENV      production
 ENV JEKYLL_SRC      /tmp/jekyll/src/
 ENV PATH            /tmp/gems/bin:$PATH
 
+# do a bit of magic as root
+USER root
+
 RUN sed -i 's/^CREATE_MAIL_SPOOL=yes/CREATE_MAIL_SPOOL=no/' /etc/default/useradd
 RUN useradd --create-home --shell /bin/bash jsite
+
+# we used to use WORKDIR, but kept ending up with root owned directories
+# WORKDIR             ${JEKYLL_DEST}
+# WORKDIR             ${JEKYLL_SRC}
+# RUN chown -R jsite: ${JEKYLL_SRC} ${JEKYLL_DEST}
+# Reading https://github.com/moby/moby/issues/36677#issuecomment-508277668
+# it seems that we might as well just do things the old fashioned way
+
 USER jsite
 
-WORKDIR             ${JEKYLL_DEST}
+# create the workdir as non-root user
+RUN mkdir -p ${JEKYLL_DEST} && mkdir -p ${JEKYLL_SRC}
 WORKDIR             ${JEKYLL_SRC}
 
 COPY    Gemfile*    ${JEKYLL_SRC}
