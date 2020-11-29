@@ -35,6 +35,7 @@ RUN 	gem install bundler
 COPY    Gemfile*    ${JEKYLL_SRC}
 RUN     bundle install --full-index
 
+ONBUILD     ENV GEM_HOME        /tmp/gems
 ONBUILD		COPY    Gemfile*    ${JEKYLL_SRC}
 ONBUILD		USER root
 ONBUILD		RUN  chown -R jsite: ${JEKYLL_SRC}
