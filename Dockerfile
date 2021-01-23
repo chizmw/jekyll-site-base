@@ -32,6 +32,8 @@ RUN mkdir -p ${JEKYLL_DEST} && mkdir -p ${JEKYLL_SRC}
 WORKDIR             ${JEKYLL_SRC}
 
 RUN 	gem install bundler
+COPY    .bundle    ${JEKYLL_SRC}/.bundle/
+RUN     ls         ${JEKYLL_SRC}/.bundle/
 COPY    Gemfile*    ${JEKYLL_SRC}
 RUN     bundle install --full-index
 
