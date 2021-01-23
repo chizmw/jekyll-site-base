@@ -28,7 +28,7 @@ jobs:
       - uses: benjlevesque/short-sha@v1.2
         id: short-sha
         with:
-          length: 8
+          length: 7
       - run: echo $SHA
         env:
           SHA: ${{ steps.short-sha.outputs.sha }}
