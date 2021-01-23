@@ -56,7 +56,7 @@ ONBUILD		ENV JEKYLL_OVERRIDES=${jekyll_overrides:-}
 
 # JEKYLL_OVERRIDES is set where required in 01.nginx.proxy/docker-compose.yml
 ONBUILD		RUN     echo +++ Using: --config _config.yml,${JEKYLL_OVERRIDES}
-ONBUILD		RUN     jekyll build --trace --destination ${JEKYLL_DEST} --config _config.yml,${JEKYLL_OVERRIDES}
+ONBUILD		RUN     bundle exec jekyll build --trace --destination ${JEKYLL_DEST} --config _config.yml,${JEKYLL_OVERRIDES}
 ONBUILD		RUN     ls -larth ${JEKYLL_DEST}
 
 #-----
