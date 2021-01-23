@@ -45,8 +45,8 @@ RUN bundle config --local build.sassc --disable-march-tune-native
 COPY    Gemfile*    ${JEKYLL_SRC}
 RUN     bundle install --full-index
 
-ONBUILD     ENV GEM_HOME        /myjekyll/gems
-ONBUILD     COPY    Gemfile*    ${JEKYLL_SRC}
+ONBUILD     ENV  GEM_HOME        /myjekyll/gems
+ONBUILD     COPY Gemfile*    ${JEKYLL_SRC}
 ONBUILD     USER root
 ONBUILD     RUN  chown -R jsite: ${JEKYLL_SRC}
 ONBUILD     RUN  chown -R jsite: ${JEKYLL_DEST}
@@ -54,8 +54,8 @@ ONBUILD     USER jsite
 ONBUILD     RUN  ls -l ${JEKYLL_SRC}
 ONBUILD     RUN  bundle config --local build.sassc --disable-march-tune-native
 ONBUILD     RUN  bundle config --local build.eventmachine --disable-march-tune-native
-ONBUILD     RUN     bundle install --full-index
-ONBUILD     COPY    .           ${JEKYLL_SRC}
+ONBUILD     RUN  bundle install
+ONBUILD     COPY .           ${JEKYLL_SRC}
 
 ONBUILD     USER root
 ONBUILD     RUN  chown -R jsite: ${JEKYLL_SRC}
