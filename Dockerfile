@@ -6,17 +6,20 @@ FROM jekyll/jekyll:4 as jekyll
 # IN THERE
 # we are building under our own rules, so we just work somewhere else
 ENV TZ=UTC
-ENV GEM_HOME        /tmp/gems
-ENV JEKYLL_DEST     /tmp/jekyll/dest/
+ENV GEM_HOME        /myjekyll/gems
+ENV JEKYLL_DEST     /myjekyll/jekyll/dest/
 ENV JEKYLL_ENV      production
-ENV JEKYLL_SRC      /tmp/jekyll/src/
-ENV PATH            /tmp/gems/bin:$PATH
+ENV JEKYLL_SRC      /myjekyll/jekyll/src/
+ENV PATH            /myjekyll/gems/bin:$PATH
 
 # do a bit of magic as root
 USER root
 
 RUN sed -i 's/^CREATE_MAIL_SPOOL=yes/CREATE_MAIL_SPOOL=no/' /etc/default/useradd
 RUN useradd --create-home --shell /bin/bash jsite
+RUN install -d -o jsite ${JEKYLL_DEST} ${GEM_HOME}
+RUN install -d -o jsite ${JEKYLL_DEST} ${JEKYLL_DEST}
+RUN install -d -o jsite ${JEKYLL_DEST} ${JEKYLL_SRC}
 
 # we used to use WORKDIR, but kept ending up with root owned directories
 # WORKDIR             ${JEKYLL_DEST}
@@ -42,7 +45,7 @@ RUN bundle config --local build.sassc --disable-march-tune-native
 COPY    Gemfile*    ${JEKYLL_SRC}
 RUN     bundle install --full-index
 
-ONBUILD     ENV GEM_HOME        /tmp/gems
+ONBUILD     ENV GEM_HOME        /myjekyll/gems
 ONBUILD     COPY    Gemfile*    ${JEKYLL_SRC}
 ONBUILD     USER root
 ONBUILD     RUN  chown -R jsite: ${JEKYLL_SRC}
