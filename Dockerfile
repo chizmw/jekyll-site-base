@@ -31,35 +31,40 @@ USER jsite
 RUN mkdir -p ${JEKYLL_DEST} && mkdir -p ${JEKYLL_SRC}
 WORKDIR             ${JEKYLL_SRC}
 
-RUN 	gem install bundler
-COPY    .bundle    ${JEKYLL_SRC}/.bundle/
-RUN     ls         ${JEKYLL_SRC}/.bundle/
+RUN     gem install bundler
+
+# desperate sassc fix attempts
+# https://github.com/sass/sassc-ruby/issues/146#issuecomment-541364174
+RUN gem uninstall sassc && \
+    gem install sassc -- --disable-march-tune-native
+RUN bundle config --local build.sassc --disable-march-tune-native
+
 COPY    Gemfile*    ${JEKYLL_SRC}
 RUN     bundle install --full-index
 
 ONBUILD     ENV GEM_HOME        /tmp/gems
-ONBUILD		COPY    Gemfile*    ${JEKYLL_SRC}
-ONBUILD		USER root
-ONBUILD		RUN  chown -R jsite: ${JEKYLL_SRC}
-ONBUILD		RUN  chown -R jsite: ${JEKYLL_DEST}
-ONBUILD		USER jsite
-ONBUILD		RUN  ls -l ${JEKYLL_SRC}
-ONBUILD		RUN     bundle install --full-index
-ONBUILD		COPY    .           ${JEKYLL_SRC}
+ONBUILD     COPY    Gemfile*    ${JEKYLL_SRC}
+ONBUILD     USER root
+ONBUILD     RUN  chown -R jsite: ${JEKYLL_SRC}
+ONBUILD     RUN  chown -R jsite: ${JEKYLL_DEST}
+ONBUILD     USER jsite
+ONBUILD     RUN  ls -l ${JEKYLL_SRC}
+ONBUILD     RUN     bundle install --full-index
+ONBUILD     COPY    .           ${JEKYLL_SRC}
 
-ONBUILD		USER root
-ONBUILD		RUN  chown -R jsite: ${JEKYLL_SRC}
-ONBUILD		RUN  chown -R jsite: ${JEKYLL_DEST}
-ONBUILD		USER jsite
+ONBUILD     USER root
+ONBUILD     RUN  chown -R jsite: ${JEKYLL_SRC}
+ONBUILD     RUN  chown -R jsite: ${JEKYLL_DEST}
+ONBUILD     USER jsite
 
-ONBUILD		ARG jekyll_overrides
+ONBUILD     ARG jekyll_overrides
 # set a default (of nothing) in case the ARG isn't passed
-ONBUILD		ENV JEKYLL_OVERRIDES=${jekyll_overrides:-}
+ONBUILD     ENV JEKYLL_OVERRIDES=${jekyll_overrides:-}
 
 # JEKYLL_OVERRIDES is set where required in 01.nginx.proxy/docker-compose.yml
-ONBUILD		RUN     echo +++ Using: --config _config.yml,${JEKYLL_OVERRIDES}
-ONBUILD		RUN     bundle exec jekyll build --trace --destination ${JEKYLL_DEST} --config _config.yml,${JEKYLL_OVERRIDES}
-ONBUILD		RUN     ls -larth ${JEKYLL_DEST}
+ONBUILD     RUN     echo +++ Using: --config _config.yml,${JEKYLL_OVERRIDES}
+ONBUILD     RUN     bundle exec jekyll build --trace --destination ${JEKYLL_DEST} --config _config.yml,${JEKYLL_OVERRIDES}
+ONBUILD     RUN     ls -larth ${JEKYLL_DEST}
 
 #-----
 #FROM    kyma/docker-nginx
