@@ -49,6 +49,7 @@ ONBUILD     RUN  chown -R jsite: ${JEKYLL_SRC}
 ONBUILD     RUN  chown -R jsite: ${JEKYLL_DEST}
 ONBUILD     USER jsite
 ONBUILD     RUN  ls -l ${JEKYLL_SRC}
+ONBUILD     RUN  bundle config --local build.sassc --disable-march-tune-native
 ONBUILD     RUN     bundle install --full-index
 ONBUILD     COPY    .           ${JEKYLL_SRC}
 
