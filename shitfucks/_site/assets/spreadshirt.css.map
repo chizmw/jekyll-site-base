@@ -1,0 +1,12 @@
+{
+	"version": 3,
+	"file": "spreadshirt.css",
+	"sources": [
+		"spreadshirt.scss"
+	],
+	"sourcesContent": [
+		"$primary-color:         white;\n$off-white:             #f2eee4;\n$grey:                  #c0c0c0;\n$black:                 #000000;\n$background-green:      #287233;\n$link-color:            $off-white;\n\n/* spreadshirt CSS modifications */\n  .customPageBackground, .SprdMain {\n    background-color:   $background-green;\n    color:              $primary-color;\n  }\n\n  .customHighlight {\n    border-color:       black;\n  }\n\n  .SprdMain .sprd-product-list-item__title,\n  .SprdMain .sprd-filterpane-section__title,\n  .SprdMain .sprd-activefilters-lp,\n  .SprdMain .sprd-promo-expander {\n    color:              $primary-color;\n  }\n\n  .SprdMain .sprd-product-list-item__num-products {\n    color:              $primary-color;\n    font-style:         italic;\n  }\n\n  .SprdMain .sprd-promo-expander {\n    background:         $background-green;\n    color:              $off-white;\n  }\n\n  .sprd-listpage__title,\n  .sprd-listpage__subtitle {\n    display:none;\n  }\n\n  .sprd-footer, .sprd-info-footer, .sprd-service-footer, a#buttonSpreadshirt,\n  .sprd-header, .sprd-navigation, .sprd-promo-header, .sprd-promo-expander,\n  .sprd-container, .sprd-product-list-item__title, .sprd-listpage__title,\n  .sprd__headline, .sprd-listpage, .sprd-filterpane,\n  .sprd-filterpane-section__title, .sprd-collections,\n  .sprd-listpage, .sprd-bg-m2 {\n    background-color:   $background-green;\n  }\n"
+	],
+	"names": [],
+	"mappings": "AAOA,mCAAmC;AACjC,AAAA,qBAAqB,EAAE,SAAS,CAAC,EAC/B,gBAAgB,EALI,OAAO,EAM3B,KAAK,EAVe,KAAK,GAW1B;;AAED,AAAA,gBAAgB,CAAC,EACf,YAAY,EAAQ,KAAK,GAC1B;;AAED,AAAA,SAAS,CAAC,8BAA8B,EACxC,SAAS,CAAC,+BAA+B,EACzC,SAAS,CAAC,sBAAsB,EAChC,SAAS,CAAC,oBAAoB,CAAC,EAC7B,KAAK,EArBe,KAAK,GAsB1B;;AAED,AAAA,SAAS,CAAC,qCAAqC,CAAC,EAC9C,KAAK,EAzBe,KAAK,EA0BzB,UAAU,EAAU,MAAM,GAC3B;;AAED,AAAA,SAAS,CAAC,oBAAoB,CAAC,EAC7B,UAAU,EA1BU,OAAO,EA2B3B,KAAK,EA9Be,OAAO,GA+B5B;;AAED,AAAA,qBAAqB,EACrB,wBAAwB,CAAC,EACvB,OAAO,EAAC,IAAI,GACb;;AAED,AAAA,YAAY,EAAE,iBAAiB,EAAE,oBAAoB,EAAE,CAAC,AAAA,kBAAkB,EAC1E,YAAY,EAAE,gBAAgB,EAAE,kBAAkB,EAAE,oBAAoB,EACxE,eAAe,EAAE,8BAA8B,EAAE,qBAAqB,EACtE,eAAe,EAAE,cAAc,EAAE,gBAAgB,EACjD,+BAA+B,EAAE,iBAAiB,EAClD,cAAc,EAAE,WAAW,CAAC,EAC1B,gBAAgB,EAzCI,OAAO,GA0C5B"
+}

@@ -1,0 +1,10 @@
+<ul class="social-media-list">
+  {%- if site.socialmedia.twitter   -%}<li><a href="https://www.twitter.com/{{ site.socialmedia.twitter| cgi_escape | escape }}"><i class="fab fa-twitter"></i> <span class="username">{{ site.socialmedia.twitter| escape }}</span></a></li>{%- endif -%}
+  {%- if site.socialmedia.bgggameid -%}<li><a href="https://boardgamegeek.com/boardgame/291240/{{ site.socialmedia.bgggameid| cgi_escape | escape }}"><i class="fad fa-dice"></i> <span class="username">BoardGameGeek</span></a></li>{%- endif -%}
+  {%- if site.socialmedia.github    -%}<li><a href="https://github.com/{{ site.socialmedia.github | cgi_escape | escape }}"><i class="fab fa-github"></i> <span class="username">{{ site.socialmedia.github| escape }}</span></a></li>{%- endif -%}
+  {%- if site.socialmedia.facebook  -%}<li><a href="https://www.facebook.com/{{ site.socialmedia.facebook | cgi_escape | escape }}"><i class="fab fa-facebook"></i> <span class="username">{{ site.socialmedia.facebook| escape }}</span></a></li>{%- endif -%}
+  {%- if site.socialmedia.instagram -%}<li><a href="https://instagram.com/{{ site.socialmedia.instagram | cgi_escape | escape }}"><i class="fab fa-instagram"></i> <span class="username">{{ site.socialmedia.instagram| escape }}</span></a></li>{%- endif -%}
+  {%- if site.socialmedia.linkedin  -%}<li><a href="https://www.linkedin.com/in/{{ site.socialmedia.linkedin | cgi_escape | escape }}"><i class="fab fa-linkedin"></i> <span class="username">{{ site.socialmedia.linkedin| escape }}</span></a></li>{%- endif -%}
+
+  {%- if site.rss -%}<li><a href="{{ 'feed.xml' | relative_url }}"><svg class="svg-icon"><use xlink:href="{{ '/assets/minima-social-icons.svg#rss' | relative_url }}"></use></svg> <span>{{ site.rss | escape }}</span></a></li>{%- endif -%}
+</ul>

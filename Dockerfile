@@ -51,6 +51,7 @@ ONBUILD     USER root
 ONBUILD     RUN  chown -R jsite: ${JEKYLL_SRC}
 ONBUILD     RUN  chown -R jsite: ${JEKYLL_DEST}
 ONBUILD     USER jsite
+ONBUILD     COPY ["#jekyll-theme-hydejack", "${JEKYLL_SRC}/#jekyll-theme-hydejack"]
 ONBUILD     RUN  ls -l ${JEKYLL_SRC}
 ONBUILD     RUN  bundle config --local build.sassc --disable-march-tune-native
 ONBUILD     RUN  bundle config --local build.eventmachine --disable-march-tune-native

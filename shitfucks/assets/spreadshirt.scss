@@ -1,0 +1,50 @@
+---
+---
+
+$primary-color:         white;
+$off-white:             #f2eee4;
+$grey:                  #c0c0c0;
+$black:                 #000000;
+$background-green:      #287233;
+$link-color:            $off-white;
+
+/* spreadshirt CSS modifications */
+  .customPageBackground, .SprdMain {
+    background-color:   $background-green;
+    color:              $primary-color;
+  }
+
+  .customHighlight {
+    border-color:       black;
+  }
+
+  .SprdMain .sprd-product-list-item__title,
+  .SprdMain .sprd-filterpane-section__title,
+  .SprdMain .sprd-activefilters-lp,
+  .SprdMain .sprd-promo-expander {
+    color:              $primary-color;
+  }
+
+  .SprdMain .sprd-product-list-item__num-products {
+    color:              $primary-color;
+    font-style:         italic;
+  }
+
+  .SprdMain .sprd-promo-expander {
+    background:         $background-green;
+    color:              $off-white;
+  }
+
+  .sprd-listpage__title,
+  .sprd-listpage__subtitle {
+    display:none;
+  }
+
+  .sprd-footer, .sprd-info-footer, .sprd-service-footer, a#buttonSpreadshirt,
+  .sprd-header, .sprd-navigation, .sprd-promo-header, .sprd-promo-expander,
+  .sprd-container, .sprd-product-list-item__title, .sprd-listpage__title,
+  .sprd__headline, .sprd-listpage, .sprd-filterpane,
+  .sprd-filterpane-section__title, .sprd-collections,
+  .sprd-listpage, .sprd-bg-m2 {
+    background-color:   $background-green;
+  }

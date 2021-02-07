@@ -1,0 +1,8 @@
+---
+permalink: /.well-known/brave-rewards-verification.txt
+layout:    null
+---
+This is a Brave Rewards publisher verification file.
+
+Domain: secret-cthulhu.com
+Token: dc4fd11ad30d9340dbaf6a736a226b1e94a96b09a9479d90cc395446baf7719b

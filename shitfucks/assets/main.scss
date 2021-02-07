@@ -1,0 +1,86 @@
+---
+---
+
+@import "minima";
+
+$primary-color:         white;
+$off-white:             #f2eee4;
+$grey:                  #c0c0c0;
+$black:                 #000000;
+$background-green:      #287233;
+$link-color:            $off-white;
+
+/* SCSS overrides in assets/main.scss */
+
+body {
+    background-color:   $background-green;
+    color:              $off-white;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 450; }
+
+.site-nav {
+    background-color:   $background-green;
+    color:              $off-white;
+}
+
+.site-title, .site-title:visited {
+    color:         $primary-color;
+}
+
+a:link {
+    color:         $link-color;
+    text-decoration: underline $grey;
+}
+a:visited {
+    color:         $link-color;
+    text-decoration: none;
+}
+a:hover {
+    color:         $link-color;
+    text-decoration: underline $black;
+    cursor: pointer;
+}
+a:active {
+    color:          $link-color;
+    text-decoration: underline $grey;
+}
+
+a.site-title, a.page-link, .social-media-list > li > a, a.u-email {
+    text-decoration: none;
+}
+
+.site-nav .page-link {
+    color:              $off-white;
+}
+
+.post-title {
+    display: none;
+}
+
+
+.fa-twitter {
+    color:          black;
+}
+
+p.p-justified {
+    text-align: justify;
+    text-justify: inter-word;
+}
+
+h2.footer-heading {
+    display: none;
+}
+
+.footer-col > p {
+    color:              $off-white;
+}
+
+.p-name {
+    color:              $off-white;
+}
+
+li > a {
+    color:         $primary-color;
+}
